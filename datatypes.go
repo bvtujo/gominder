@@ -1,9 +1,10 @@
-package datapoint
+package datatypes
 
 import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"github.com/spf13/viper"
 )
 
 func check(e error) {
@@ -67,15 +68,4 @@ type User struct {
 	Username string
 	ApiKey string
 	Goals []Goal
-}
-
-func main() {
-	dat, err := ioutil.ReadFile("pressdata.json")
-	check(err)
-	responseObject := DatapointResponse{}
-	json.Unmarshal(dat, &responseObject)
-
-	for _, data := range responseObject.Collection {
-		fmt.Println(data)
-	}
 }
